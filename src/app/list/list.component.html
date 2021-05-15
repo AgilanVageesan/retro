@@ -1,1 +1,40 @@
-<h1>list works!</h1>
+<div class="container-fluid" style="width: 25%;float: left;">
+    <div class="form-floating mb-3">
+        <input type="email" [(ngModel)]="currentPoint" (keyup.enter)="AddNewPoint()" class="form-control"
+            id="floatingInput" placeholder="what went well">
+        <label for="floatingInput">{{retroInput.RetroTitle}}</label>
+    </div>
+    <div *ngIf="retroPoints?.length>0" [ngClass]="retroInput.Style" style="padding: 1%;overflow-y: auto;max-height: 85vh;">
+        <div *ngFor="let point of retroPoints"
+            [ngClass]="retroInput.Style"
+            style="margin: 1% 0% 1% 0%;">
+            <div class="card-body input-group text-dark" style="padding: 0.75rem;">
+                <p class="card-text" style="margin-bottom: auto;">{{point.Text}}</p>
+                <button type="button" style="margin-left: auto;height: 0.5%;padding: 1%;"
+                    (click)="open(mymodal,point.Id)" class="btn btn-outline-dark"><i
+                        class="bi bi-pencil-square"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL POP-UP -->
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{retroInput.RetroTitle}}</h4>
+        <button type="button" style="height: 5vh;font-size: medium;padding: revert;" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')"><i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <!-- <label for="exampleFormControlTextarea1">Edit or Delete the point !</label> -->
+            <textarea class="form-control" name="currentRetroPoint.Id" [(ngModel)]="currentRetroPoint.Text"
+                id="currentRetroPoint.Id" rows="3">{{currentRetroPoint.Text}}</textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="modal.close(0)">Delete</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close(currentRetroPoint)">Ok</button>
+    </div>
+</ng-template>
+<!-- MODAL POP-UP -->

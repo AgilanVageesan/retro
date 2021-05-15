@@ -1,2 +1,10 @@
-<h1>Retro App</h1>
-<app-list></app-list>
+<nav class="navbar navbar-dark bg-dark" style="margin-bottom: 1%;">
+  <h1 style="color: white;margin-left: 45%;">RETRO</h1>
+</nav>
+
+<div class="bg-dark">
+  <app-list [retroInput]="goodPoints"></app-list>
+  <app-list [retroInput]="badPoints"></app-list>
+  <app-list [retroInput]="tryNextPoints"></app-list>
+  <app-list [retroInput]="puzzlePoints"></app-list>
+</div>
