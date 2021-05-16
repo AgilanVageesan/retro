@@ -10,22 +10,26 @@ export class AppComponent {
   goodPoints: RetroType = {
     IdType: 1,
     RetroTitle: "What Went Well ?",
-    Style: "card border-success",
+    CardStyle: "cardGreen",
+    ContentStyle:"contentGreen"
   };
   badPoints: RetroType = {
     IdType: 2,
     RetroTitle: "What Went Less Well ?",
-    Style: "card border-danger",
+    CardStyle: "cardYellow",
+    ContentStyle:"contentYellow"
   };
   tryNextPoints: RetroType = {
     IdType: 3,
     RetroTitle: "What To Try Next ?",
-    Style: "card border-primary",
+    CardStyle: "cardPurple",
+    ContentStyle:"contentPurple"
   };
   puzzlePoints: RetroType = {
     IdType: 4,
     RetroTitle: "What puzzles us?",
-    Style: "card border-warning",
+    CardStyle: "cardBlue",
+    ContentStyle:"contentBlue"
   };
 
   title = "retro";

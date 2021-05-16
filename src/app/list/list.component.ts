@@ -29,7 +29,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.AddDummyValue();
+    // this.AddDummyValue();
   }
 
   AddDummyValue() {
@@ -43,12 +43,13 @@ export class ListComponent implements OnInit {
   }
 
   AddNewPoint() {
-    if (this.currentPoint.length > 0) {
+    if (this.currentPoint.trim().length >1) {
       let newPoint: RetroPoint = {
         Id: this.retroPoints.length + 1,
         Text: this.currentPoint,
       };
       this.retroPoints.push(newPoint);
+      this.currentPoint="";
     }
   }
 

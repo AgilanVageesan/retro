@@ -1,28 +1,36 @@
 <div class="container-fluid" style="width: 25%;float: left;">
     <div class="form-floating mb-3">
-        <input type="email" [(ngModel)]="currentPoint" (keyup.enter)="AddNewPoint()" class="form-control"
-            id="floatingInput" placeholder="what went well">
-        <label for="floatingInput">{{retroInput.RetroTitle}}</label>
+        <textarea style="height: auto;" type="email" [(ngModel)]="currentPoint" [ngClass]="retroInput.CardStyle" (keyup.enter)="AddNewPoint()"
+            class="form-control" id="floatingInput" rows="15" placeholder="what went well" rows="3"></textarea>
+        <label for="floatingInput" [ngClass]="retroInput.ContentStyle">{{retroInput.RetroTitle}}</label>
     </div>
-    <div *ngIf="retroPoints?.length>0" [ngClass]="retroInput.Style" style="padding: 1%;overflow-y: auto;max-height: 85vh;">
-        <div *ngFor="let point of retroPoints"
-            [ngClass]="retroInput.Style"
-            style="margin: 1% 0% 1% 0%;">
-            <div class="card-body input-group text-dark" style="padding: 0.75rem;">
-                <p class="card-text" style="margin-bottom: auto;">{{point.Text}}</p>
-                <button type="button" style="margin-left: auto;height: 0.5%;padding: 1%;"
-                    (click)="open(mymodal,point.Id)" class="btn btn-outline-dark"><i
-                        class="bi bi-pencil-square"></i></button>
+    <div *ngIf="retroPoints?.length>0" style="padding: 1%;overflow-y: auto;max-height: 85vh;">
+        <div *ngFor="let point of retroPoints" class="content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" [ngClass]="retroInput.CardStyle" data-background="color"
+                    data-radius="none">
+                    <div class="content input-group">
+                        <p style="margin-bottom: 0% !important;" [ngClass]="retroInput.ContentStyle">{{point.Text}}
+                        </p>
+                        <span style="margin-left: auto;"> <i href="" (click)="open(mymodal,point.Id)"
+                                class="bi bi-pencil-square" style="cursor: pointer;"
+                                [ngClass]="retroInput.ContentStyle"></i></span>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+
 <!-- MODAL POP-UP -->
 <ng-template #mymodal let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">{{retroInput.RetroTitle}}</h4>
-        <button type="button" style="height: 5vh;font-size: medium;padding: revert;" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')"><i class="bi bi-x"></i>
+        <button type="button" style="height: 5vh;font-size: medium;padding: revert;" class="btn btn-outline-dark"
+            (click)="modal.dismiss('Cross click')"><i class="bi bi-x"></i>
         </button>
     </div>
     <div class="modal-body">
